@@ -2,27 +2,7 @@ import React, { useState } from "react";
 
 import TitleMenu from "./TitleMenu";
 import ItemMenu from "./ItemMenu";
-
-const ListMenus = [
-  {
-    id: 1,
-    title: "Quản Lí dự án",
-    list: [
-      { id: 1, title: "Nội dung 1" },
-      { id: 2, title: "Nội dung 2" },
-      { id: 3, title: "Nội dung 3" },
-    ],
-  },
-  {
-    id: 2,
-    title: "Quản lí nhân viên",
-    list: [
-      { id: 4, title: "Nội dung 4" },
-      { id: 5, title: "Nội dung 5" },
-      { id: 6, title: "Nội dung 6" },
-    ],
-  },
-];
+import config from "../../config";
 
 function ListMenu() {
   const [menuChecked, setMenuChecked] = useState({ menuId: 0, subMenuID: 0 });
@@ -32,14 +12,14 @@ function ListMenu() {
     if (!menusChecked.includes(id)) {
       setMenusChecked([...menusChecked, id]);
     } else {
-      setMenusChecked(menusChecked.filter((item) => !item === id));
+      setMenusChecked(menusChecked.filter((item) => !(item === id)));
     }
   };
 
   return (
     <div>
       <div className="list-group" style={{ overflow: "hidden" }}>
-        {ListMenus.map((item) => {
+        {config.listMenus.map((item) => {
           return (
             <React.Fragment key={item.id}>
               <TitleMenu
@@ -52,6 +32,8 @@ function ListMenu() {
               {menusChecked.includes(item.id)
                 ? item.list.map((sub) => (
                     <ItemMenu
+                      to={sub.path}
+                      key={sub.id}
                       id={sub.id}
                       menuId={item.id}
                       title={sub.title}
