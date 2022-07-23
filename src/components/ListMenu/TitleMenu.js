@@ -24,7 +24,8 @@ function TitleMenu({
   return (
     <h5
       className={cx(
-        `list-group-item list-group-item-action ${checked ? "active" : ""}`,
+        `list-group-item list-group-item-action`,
+        checked ? "active" : "",
         "title-menu"
       )}
       onClick={onClickTitle}

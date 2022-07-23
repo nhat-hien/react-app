@@ -1,10 +1,17 @@
 .title-menu {
   margin-bottom: 3px;
+  color: rgba(0, 0, 0, 0.5);
 }
-
+.active {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.95);
+}
 .item-menu {
   padding-left: 25px;
+  color: rgba(0, 0, 0, 0.5);
 }
 .item-menu-active {
+  font-weight: 700;
   margin-left: 5px;
+  color: rgba(0, 0, 0, 0.95);
 }

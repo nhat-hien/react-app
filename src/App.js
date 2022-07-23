@@ -1,15 +1,30 @@
-import ListMenu from "./components/ListMenu";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DefaultLayout from "./layouts/DefaultLayout/DefaultLayout";
+import { publicRoutes } from "./routes/routes";
 
 function App() {
   return (
-    <div className="App">
-      <div className="row">
-        <div className="col-md-3">
-          <ListMenu />
-        </div>
-        <div className="col-md-9">content</div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Page = route.component;
+            return (
+              // <div>123</div>
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <DefaultLayout>
+                    <Page />
+                  </DefaultLayout>
+                }
+              />
+            );
+          })}
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
