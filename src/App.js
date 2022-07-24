@@ -1,3 +1,5 @@
+import ContentRight from "./components/Content/ContentRight"
+
 function App() {
   return (
     <div className="App">
@@ -11,9 +13,12 @@ function App() {
             <li className="list-group-item">And a fifth one</li>
           </ul>
         </div>
-        <div className="col-md-9">content</div>
+        <div className="col-md-9">
+        <ContentRight/>
+        </div>
       </div>
     </div>
+    
   );
 }
 
