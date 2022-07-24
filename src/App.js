@@ -1,24 +1,31 @@
-import ContentRight from "./components/Content/ContentRight"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DefaultLayout from "./layouts/DefaultLayout/DefaultLayout";
+import { publicRoutes } from "./routes/routes";
 
 function App() {
   return (
-    <div className="App">
-      <div className="row">
-        <div className="col-md-3">
-          <ul className="list-group">
-            <li className="list-group-item">An item</li>
-            <li className="list-group-item">A second item</li>
-            <li className="list-group-item">A third item</li>
-            <li className="list-group-item">A fourth item</li>
-            <li className="list-group-item">And a fifth one</li>
-          </ul>
-        </div>
-        <div className="col-md-9">
-        <ContentRight/>
-        </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Page = route.component;
+            return (
+              // <div>123</div>
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <DefaultLayout>
+                    <Page />
+                  </DefaultLayout>
+                }
+              />
+            );
+          })}
+        </Routes>
       </div>
-    </div>
-    
+    </Router>
+
   );
 }
 
